@@ -6,17 +6,17 @@ Package providing methods for mounting, unmounting, and extracting the contents 
 
 ## Methods
 
-#### CopyFile(source, destination string) error
+#### CopyFile
 Copies the file at the source path to the provided destination.
 
-#### CopyDirectory(source string, destination string, recursive bool) error
+#### CopyDirectory
 Copies the directory at the source path to the provided destination, with the option of recursively copying subdirectories.
 
-#### Mount(sourcePath string) (volumePath string, err error)
+#### Mount
 Uses the `os/exec` package to issue an `hdiutil attach -nobrowse` command for the given OSX disk image (.dmg).
 
-#### Unmount(volumePath string) error
+#### Unmount
 Uses the `os/exec` package to issue an `hdiutil unmount` command for the given volume path.
 
-#### ExtractDMG(sourcePath, destinationPath string) error
+#### ExtractDMG
 Mounts the disk image at the source path, copies the contents of the resulting volume to the destination path, then unmounts the volume.
