@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-//CopyFile duplicates the contents from one file path to another path
+//CopyFile copies the file at the source path to the provided destination.
 func CopyFile(source, destination string) error {
 	//Validate the source and destination paths
 	if len(source) == 0 {
@@ -75,7 +75,7 @@ func CopyFile(source, destination string) error {
 	return nil
 }
 
-//CopyDirectory recursively duplicates the contents from one directory path to another path
+//CopyDirectory copies the directory at the source path to the provided destination, with the option of recursively copying subdirectories.
 func CopyDirectory(source string, destination string, recursive bool) error {
 	if len(source) == 0 || len(destination) == 0 {
 		return errors.New("File paths must not be empty.")
@@ -129,7 +129,7 @@ func CopyDirectory(source string, destination string, recursive bool) error {
 	return nil
 }
 
-//Mount the disk image located at the source path
+//Mount uses the `os/exec` package to issue an `hdiutil attach -nobrowse` command for the given OSX disk image (.dmg).
 func Mount(sourcePath string) (volumePath string, err error) {
 	var command = exec.Command("hdiutil", "attach", "-nobrowse", sourcePath)
 	outputBytes, err := command.Output()
@@ -146,7 +146,7 @@ func Mount(sourcePath string) (volumePath string, err error) {
 	return volumePath, nil
 }
 
-//Unmount the specified volume
+//Unmount uses the `os/exec` package to issue an `hdiutil unmount` command for the given volume path.
 func Unmount(volumePath string) error {
 	var command = exec.Command("hdiutil", "unmount", volumePath)
 	if err := command.Start(); err != nil {
@@ -160,8 +160,7 @@ func Unmount(volumePath string) error {
 	return nil
 }
 
-//ExtractDMG mounts the dmg at the provided path and copies the contents of the
-//mounted volume to the provided location.
+//ExtractDMG mounts the disk image at the source path, copies the contents of the resulting volume to the destination path, then unmounts the volume.
 func ExtractDMG(sourcePath, destinationPath string) error {
 	volumePath, err := Mount(sourcePath)
 	if err != nil {
