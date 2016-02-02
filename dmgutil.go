@@ -1,5 +1,6 @@
-//Package dmgutil is a simple package that assists with the mounting of disk images on
-//OSX and the copying of the content to a user specified location.
+//Package dmgutil is a simple package that provides methods for mounting,
+//unmounting, and extracting the contents of an OSX disk image (.dmg) using the
+//hdiutil system command.
 package dmgutil
 
 import (
