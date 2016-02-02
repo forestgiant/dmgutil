@@ -1,0 +1,1 @@
+This is a simple text file used to test attempts to mount files that aren't disk images.

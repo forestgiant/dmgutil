@@ -22,3 +22,9 @@ _testmain.go
 *.exe
 *.test
 *.prof
+
+# Test Coverage File
+cover.out
+
+# Builds
+dmgutil
