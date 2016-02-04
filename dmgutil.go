@@ -118,7 +118,7 @@ func CopyDirectory(source string, destination string, recursive bool) error {
 			if err != nil {
 				return err
 			}
-		} else if object.Mode().IsRegular() == true {
+		} else {
 			err = CopyFile(sourceObjectName, destObjectName)
 			if err != nil {
 				return err
