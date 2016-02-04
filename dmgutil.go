@@ -49,14 +49,8 @@ func CopyFile(source, destination string) error {
 			return err
 		}
 
-		//get the stat for the source file
-		sourceInfo, err := os.Stat(source)
-		if err != nil {
-			return err
-		}
-
 		//replicate the source file mode for the destination file
-		if err := os.Chmod(destination, sourceInfo.Mode()); err != nil {
+		if err := os.Chmod(destination, sourceFileInfo.Mode()); err != nil {
 			return err
 		}
 	} else if sourceFileInfo.Mode()&os.ModeSymlink != 0 {
