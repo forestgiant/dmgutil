@@ -6,12 +6,6 @@ Package providing methods for mounting, unmounting, and extracting the contents 
 
 ## Methods
 
-#### CopyFile
-Copies the file at the source path to the provided destination.
-
-#### CopyDirectory
-Copies the directory at the source path to the provided destination, with the option of recursively copying subdirectories.
-
 #### Mount
 Uses the `os/exec` package to issue an `hdiutil attach -nobrowse` command for the given OSX disk image (.dmg).
 
